@@ -93,6 +93,7 @@ public class GestCommandeServlet extends HttpServlet {
 		            // set selected meal reference as attribute of request
 		            request.setAttribute("selectedRefRepas", refRepas);
 		            // forward request to addCommande.jsp page
+		            System.out.println("Un repas est ajoutée au panier sous la réfèrence de "+refRepas);
 		            request.getRequestDispatcher("addCommande.jsp").forward(request, response);
 		        }
 		    }
@@ -102,10 +103,26 @@ public class GestCommandeServlet extends HttpServlet {
 		    String contact = request.getParameter("contact").toString();
 		    // get selected meal reference from request attribute
 		    String refRepas =(String) request.getAttribute("selectedRefRepas");
+		    
 		    // call web service method to place order
 		    ws.passerCommande(contact, nom, refRepas);
+		   
 		    // write message to response
-		    response.getWriter().write("Merci Monsieur "+" "+nom+" "+"votre commande à éte passer avec succées  ");
-		} 
+		    if ((servletPath.equals("/ConfirmationCommande") && (request != null))) {
+		        // create a new session or get the existing one
+		       
+		        // set a message of confirmation in the session
+		    	 session.setAttribute("messageConfirmation", "Merci pour votre confiance! Votre commande a été passée avec succès. votre nom est "+ nom +" et votre contact est "+ contact);
 
-}}
+		        // redirect the user to the ListRepas.jsp page
+		        response.sendRedirect("repasList.jsp");
+		    } 
+
+
+		  
+		    
+		
+
+}
+	}
+}

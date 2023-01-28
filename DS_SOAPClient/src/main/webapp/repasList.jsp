@@ -66,6 +66,12 @@ table {
 
 </head>
 <body>
+
+<c:if test="${not empty sessionScope.messageConfirmation}">
+    <div class="alert alert-success">
+        <c:out value="${sessionScope.messageConfirmation}" />
+    </div>
+</c:if>
 <h1 style="text-align: center; font-size: x-large; color: #0000ff;">Liste Des Repas</h1>
 
 

@@ -1,7 +1,7 @@
 package entites;
 
 public class Commande {
-	  private int refCommande=0;
+	  static int refCommande=0;
 	    private String nomClient;
 	    private String contactClient;
 	    private Repas R;
@@ -44,6 +44,14 @@ public class Commande {
 
 		public void setContactClient(String contactClient) {
 			this.contactClient = contactClient;
+		}
+
+		public Repas getR() {
+			return R;
+		}
+
+		public void setR(Repas r) {
+			R = r;
 		}
 
 	    // Getters and setters for refCommande, nomClient, and contactClient

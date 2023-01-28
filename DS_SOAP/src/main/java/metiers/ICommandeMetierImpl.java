@@ -154,6 +154,10 @@ public class ICommandeMetierImpl implements ICommandeMetier {
 		public void passerCommande(String nom, String contact, Repas repas) {
 			// TODO Auto-generated method stub
 			 Commande commande = new Commande (nom, contact,repas);
+			 System.out.println("Ref_Commande:  "+commande.getRefCommande()+"\n Nom Client  "+commande.getContactClient()+"\n Contact du client  "+commande.getNomClient());
+			
+			 
+			 
 			 commandes.add(commande);
 		}
 }
